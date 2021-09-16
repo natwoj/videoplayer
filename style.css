@@ -5,12 +5,10 @@ body {
     width:614px;
     min-height: 346px;
     margin: auto;
-    
     border-radius: 10px;
     background-color: #232332;
     margin-top: 100px;
-    /*box-shadow: 2px 2px 150px 130px #5e5e60;*/
-        
+    /*box-shadow: 2px 2px 150px 130px #5e5e60;*/ 
     video {
         width:614px;
         height: 346px;
@@ -46,4 +44,27 @@ body {
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         
+    }
+
+    .progress-line {
+        position: relative;
+    }
+    .progress-line-bottom {
+        position: absolute;
+        width:560px;
+        height: 4px;
+    
+        top:50px;
+        left:30px;
+        background-color: #bfc0c2;
+        border-radius: 3px;
+    }
+    .progress-line-top{
+        position: absolute;
+        width: 100px;
+        height: 4px;
+        top:50px;
+        left:30px;
+        background-color:#ffffff; 
+        border-radius: 3px;
     }
