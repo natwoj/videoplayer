@@ -85,3 +85,19 @@ body {
     .pause-containter-visible-off > img {
         display: none;
     }
+    .pause-container-visible-on > img {
+        display: block;
+        margin-top:68px;
+        margin-left: 25px;
+        margin-right: -2px;
+    }
+    .current-time-container,.mute-ico-visible-on,.size-ico-visible-on,.un-mute-ico-visible-off,.more-ico {
+        position: relative;
+        float: left;
+    }
+    #current-time {
+        position: absolute;
+        color:white;
+        top:54px;
+        left:20px;
+    }
