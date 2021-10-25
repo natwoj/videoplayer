@@ -1,6 +1,10 @@
 let playButton = document.getElementById("playButton");
 let pauseButton = document.getElementById("pauseButton");
 let videoPlayer = document.getElementById("videoPlayer");
+
+let progressResult = 0;
+let progressLineTop = document.getElementById("progressLineTop");
+
 // zmiana ikony play na pause po kliknięciu
 function ChangePlayButtonToPauseButton() {
     playButton.classList.remove("play-container-visible-on");
@@ -13,6 +17,7 @@ function ChangePlayButtonToPauseButton() {
     function doPlayVideo(){
         videoPlayer.play();
     }
+    GoWithProgressLine()
 }
 function ChangePauseButtonToPlayButton () {
 pauseButton.classList.remove("pause-container-visible-on");
@@ -24,7 +29,19 @@ playButton.classList.add("play-container-visible-on");
 doPauseVideo();
 function doPauseVideo() {
 videoPlayer.pause(); 
+}
+GoWithProgressLine();
+}
+function GoWithProgressLine() {
+var id = setInterval(frame,5);
+function frame() {
+if (videoPlayer.readyState) {
+    progressResult = (videoPlayer.currentTime*560)/videoPlayer.duration;
+    progressLineTop.style.width = progressResult;
+}
+
 
 }
+
 
 }
