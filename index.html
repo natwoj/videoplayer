@@ -10,16 +10,18 @@
             <div class="video-screen">
                 <div class="linear-father">
                     <canvas id="canvas"></canvas>  
-                    <video id="videoPlayer" style="width: 614px"></video> 
+                    <video id="videoPlayer" style="width: 614px">
+                    <source src="mp4/video.mp4" type="video/mp4">
+                </video>
                 <div id="linearGradientWithControls" class="linear-gradient-visible-on">
                 <div class="progress-line"> 
                     <div id="progressLineBottom" class="progress-line-bottom"></div>
                     <div id="progressLineTop" class="progress-line-top"></div>
                 </div>
-                <div id="playButton" class="play-container-visible-on" onclick="changePlayButtonToPauseButton();">
+                <div id="playButton" class="play-container-visible-on" onclick="ChangePlayButtonToPauseButton()">
                     <img src="images/play.png" alt="play button">
                 </div>
-                <div id="pauseButton" class="pause-containter-visible-off">
+                <div id="pauseButton" class="pause-containter-visible-off" onclick="ChangePauseButtonToPlayButton()"                    ">
                     <img src="images/pause-button.png" alt="pause-button">
                 </div>
                 <div class="current-time-container">

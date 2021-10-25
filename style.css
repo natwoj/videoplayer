@@ -12,7 +12,6 @@ body {
     margin-top: 100px;
     /*box-shadow: 2px 2px 150px 130px #5e5e60;*/
             
-    
 }
 /*.sub-main {
     width: 614px;
@@ -39,7 +38,6 @@ video {
     width:614px;
     height: 346px;
     
-
 }
 .linear-gradient-visible-on {
     position: absolute;
@@ -95,6 +93,7 @@ video {
 }
 .pause-container-visible-on{
     float: left;
+
 }
 .play-container-visible-on > img {
     display: block;
