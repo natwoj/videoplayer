@@ -114,8 +114,9 @@ else if (minutes >=10 && seconds >=10) {
 
 document.getElementById("duration-time").innerHTML = durationRes; 
 }
-function DisplayFilmDurationTime () {
+function FilmDurationTimeFunc() {
     videoPlayer.ondurationchange = function () {
         DisplayFilmDurationTime(); 
     }
 }
+FilmDurationTimeFunc();
