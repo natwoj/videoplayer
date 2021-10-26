@@ -39,9 +39,14 @@ if (videoPlayer.readyState) {
     progressResult = (videoPlayer.currentTime*560)/videoPlayer.duration;
     progressLineTop.style.width = progressResult;
 }
-
-
 }
+}
+function CurrentTimeMeasure () {
+let properCurrentTimeRes = "";
+let minutes = Math.floor(videoPlayer.currentTime / 60);
+let seconds = (videoPlayer.currentTime - minutes * 60);
+seconds = seconds.toFixed(0);
+
 
 
 }
