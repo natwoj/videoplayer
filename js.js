@@ -1,13 +1,18 @@
-<<<<<<< HEAD
-let playButton = document.getElementById("playButton");
-let pauseButton = document.getElementById("pauseButton");
-let videoPlayer = document.getElementById("videoPlayer");
 
-let progressResult = 0;
-let progressLineTop = document.getElementById("progressLineTop");
-let timeProgress = document.getElementById("current-time");
-// zmiana ikony play na pause po kliknięciu
-function ChangePlayButtonToPauseButton() {
+var playButton = document.getElementById("playButton");
+var pauseButton = document.getElementById("pauseButton");
+var videoPlayer = document.getElementById("videoPlayer");
+
+var progressResult = 0;
+var progressLineTop = document.getElementById("progressLineTop");
+
+var timeProgress = document.getElementById("current-time");
+
+var muteButton = document.getElementById("muteButton");
+var unMuteButton = document.getElementById("unMuteButton");
+var idTimer;
+
+function ChangePlayButtonToPauseButton(){
     playButton.classList.remove("play-container-visible-on");
     playButton.classList.add("play-container-visible-off");
 
@@ -18,108 +23,67 @@ function ChangePlayButtonToPauseButton() {
     function doPlayVideo(){
         videoPlayer.play();
     }
-    GoWithProgressLine()
+    GoWithProgressLine();
+   TimeUpdateEvent();
 }
-function ChangePauseButtonToPlayButton () {
-pauseButton.classList.remove("pause-container-visible-on");
-pauseButton.classList.add("pause-container-visible-off");
+function ChangePauseButtonToPlayButton(){
+    pauseButton.classList.remove("pause-container-visible-on");
+    pauseButton.classList.add("pause-container-visible-off");
 
-playButton.classList.remove("play-container-visible-off");
-playButton.classList.add("play-container-visible-on");
+    playButton.classList.remove("play-container-visible-off");
+    playButton.classList.add("play-container-visible-on");
 
-doPauseVideo();
-function doPauseVideo() {
-videoPlayer.pause(); 
+    doPauseVideo();
+    function doPauseVideo(){
+        videoPlayer.pause();
+    }
+    GoWithProgressLine();
+   TimeUpdateEvent();
 }
-GoWithProgressLine();
-}
-function GoWithProgressLine() {
-var id = setInterval(frame,5);
-function frame() {
-if (videoPlayer.readyState) {
-    progressResult = (videoPlayer.currentTime*560)/videoPlayer.duration;
-    progressLineTop.style.width = progressResult;
-}
-}
-}
-function CurrentTimeMeasure () {
-let properCurrentTimeRes = "";
-let minutes = Math.floor(videoPlayer.currentTime / 60);
-let seconds = (videoPlayer.currentTime - minutes * 60);
-seconds = seconds.toFixed(0);
 
-if (minutes < 10 && seconds < 10) {
-properCurrentTimeRes = "0" + minutes + ":" + "0" + seconds;
-else if (minutes<10 && seconds >= 10) {
-    properCurrentTimeRes = "0" + minutes + ":" + seconds;
-    if (seconds==60) {
-        seconds=0;
-        properCurrentTimeRes = "0" + minutes + ":" + seconds;
+function GoWithProgressLine(){
+    var id = setInterval(frame,5);
+    function frame(){
+        if (videoPlayer.readyState){
+            progressResult = (videoPlayer.currentTime*560)/videoPlayer.duration;
+            progressLineTop.style.width = progressResult;
+        }
     }
 }
-else if (minutes>=10 && seconds <10) {
-    properCurrentTimeRes = ""+ minutes+":" +"0" + seconds;
-}
-else if (minutes>=10 && seconds>=10){
-    properCurrentTimeRes = "" + minutes + ":" + seconds;
-    if (seconds == 60) {
-        seconds = 0;
-        properCurrentTimeRes = "0" + minutes + ":" + "0" + seconds;
+
+function doCurrentTimeMeasure(){
+    var properCurrentTimeRes = "";
+    var minutes = Math.floor(videoPlayer.currentTime / 60);
+    var seconds = (videoPlayer.currentTime - minutes*60);
+    seconds = seconds.toFixed(0);
+
+    if (minutes<10 && seconds<10){
+        properCurrentTimeRes = "0" + minutes + ":"+"0" + seconds;
     }
-}
-}
-
-=======
-let playButton = document.getElementById("playButton");
-let pauseButton = document.getElementById("pauseButton");
-let videoPlayer = document.getElementById("videoPlayer");
-
-let progressResult = 0;
-let progressLineTop = document.getElementById("progressLineTop");
-
-// zmiana ikony play na pause po kliknięciu
-function ChangePlayButtonToPauseButton() {
-    playButton.classList.remove("play-container-visible-on");
-    playButton.classList.add("play-container-visible-off");
-
-    pauseButton.classList.remove("pause-container-visible-off");
-    pauseButton.classList.add("pause-container-visible-on");
-
-    doPlayVideo();
-    function doPlayVideo(){
-        videoPlayer.play();
+    else if (minutes<10 && seconds>=10){
+        properCurrentTimeRes = "0"+minutes+":"+seconds;
+        if (seconds==60){
+            seconds=0;
+            properCurrentTimeRes = "0" + minutes + ":" + "0" + seconds;
+        }
     }
-    GoWithProgressLine()
-}
-function ChangePauseButtonToPlayButton () {
-pauseButton.classList.remove("pause-container-visible-on");
-pauseButton.classList.add("pause-container-visible-off");
+    else if (minutes>=10 && seconds<10){
+        properCurrentTimeRes = ""  +minutes + ":" + "0" + seconds;
+    }
+    else if (minutes>=10 && seconds>=10){
+        properCurrentTimeRes = "" + minutes + ":" + "" + seconds;
+        if (seconds==60){
+            seconds=0;
+            properCurrentTimeRes = "0" + minutes + ":" + "0" + seconds;
+        }
+    }
+    timeProgress.innerHTML = properCurrentTimeRes;
+    if (videoPlayer.currentTime==videoPlayer.duration) ChangePauseButtonToPlayButton();
 
-playButton.classList.remove("play-container-visible-off");
-playButton.classList.add("play-container-visible-on");
+}
+function TimeUpdateEvent(){
+    videoPlayer.ontimeupdate = function(){
+        doCurrentTimeMeasure();
+    };
+}
 
-doPauseVideo();
-function doPauseVideo() {
-videoPlayer.pause(); 
-}
-GoWithProgressLine();
-}
-function GoWithProgressLine() {
-var id = setInterval(frame,5);
-function frame() {
-if (videoPlayer.readyState) {
-    progressResult = (videoPlayer.currentTime*560)/videoPlayer.duration;
-    progressLineTop.style.width = progressResult;
-}
-}
-}
-function CurrentTimeMeasure () {
-let properCurrentTimeRes = "";
-let minutes = Math.floor(videoPlayer.currentTime / 60);
-let seconds = (videoPlayer.currentTime - minutes * 60);
-seconds = seconds.toFixed(0);
-
-
-
->>>>>>> 7af6aad7a590faca8dfbe5988941b4bf559b572f
-}
