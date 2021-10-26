@@ -86,4 +86,36 @@ function TimeUpdateEvent(){
         doCurrentTimeMeasure();
     };
 }
+function DisplayFilmDurationTime (){
+    let durationRes = "";
+    let minutes = Math.floor(videoPlayer.duration/60);
+    let seconds = (videoPlayer.duration - minutes * 60);
+    seconds = seconds.toFixed(0);
+    if (minutes < 10 && seconds < 10) {
+        durationRes = "0" + minutes + ":" + "0" + seconds;
+    }
+    else if (minutes< 10 && seconds >=10) {
+        durationRes = "0" + minutes + ":" + seconds;
+        if (seconds == 60) {
+            seconds = 0;
+            durationRes = "0" + minutes + ":" + "0" + seconds;
+        }
+    }
+else if (minutes >=10 && seconds < 10) {
+    durationRes = "" + minutes + ":" + "0" + seconds;
+}
+else if (minutes >=10 && seconds >=10) {
+    durationRes = "" + minutes + ":" + "" + seconds;
+    if (seconds == 60) {
+        seconds = 0;
+        durationRes = "0" + minutes + ":" + "0" + seconds;
+    }
+}
 
+document.getElementById("duration-time").innerHTML = durationRes; 
+}
+function DisplayFilmDurationTime () {
+    videoPlayer.ondurationchange = function () {
+        DisplayFilmDurationTime(); 
+    }
+}
